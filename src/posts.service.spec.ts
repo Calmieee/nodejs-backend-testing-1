@@ -13,10 +13,19 @@ describe('PostsService', () => {
   });
 
   it('should add a new post', () => {
-    // реализуйте тест-кейс
+    const newPost = postsService.create(post);
+    expect(newPost).toHaveProperty("text", post.text);
+    console.log(newPost);
+    expect(newPost).toHaveProperty("id", "2");
+    expect(newPost).toHaveProperty("date");
   });
 
   it('should find a post', () => {
-    // реализуйте тест-кейс
+    const foundPost = postsService.find("1");
+    const notFoundPost = postsService.find("2");
+    expect(foundPost).toHaveProperty("text", "Some pre-existing post");
+    expect(foundPost).toHaveProperty("id", "1");
+    expect(foundPost).toHaveProperty("date");
+    expect(notFoundPost).toBeUndefined();
   });
 });
